@@ -8,10 +8,15 @@ import {
   Box,
   Button,
   Dialog,
-  DialogTitle,
   DialogContent,
   DialogActions,
+  IconButton,
 } from "@mui/material";
+import YouTubeEmbed from "./YouTubeEmbed";
+import CloseIcon from "@mui/icons-material/Close";
+
+
+
 
 const projects = [
   {
@@ -20,6 +25,8 @@ const projects = [
     image: "/JobPortal-Project.png", // You can replace this with actual images or icons later
     description:
       "A job portal website that allows users to post jobs and search for jobs based on their skills.",
+    repoLink: "https://github.com/rain-jar/Jobs-Site.git",
+    videoURL: "s4ygLKsONGg&ab",
   },
 
   {
@@ -27,18 +34,24 @@ const projects = [
     technologies: ["HTML/CSS", "React/Redux", "NodeJS/Express", "PostgreSQL"],
     image: "/MTL.png",
     description: "This is a description of the project.",
+    repoLink: "https://github.com/rain-jar/Jobs-Site.git",
+    videoURL: "DQacCB9tDaw&ab",
   },
   {
     title: "Coming Soon",
     technologies: ["React", "Django", "MySQL"],
     image: "logo512.png",
     description: "This is a description of the project.",
+    repoLink: "https://github.com/rain-jar/Jobs-Site.git",
+    videoURL: "DQacCB9tDaw&ab",
   },
   {
     title: "Coming Soon",
     technologies: ["React", "Socket.io", "NodeJS", "PostgreSQL"],
     image: "logo512.png",
     description: "This is a description of the project.",
+    repoLink: "https://github.com/rain-jar/Jobs-Site.git",
+    videoURL: "DQacCB9tDaw&ab",
   },
 
   {
@@ -46,6 +59,8 @@ const projects = [
     technologies: ["React", "Socket.io", "NodeJS", "PostgreSQL"],
     image: "logo512.png",
     description: "This is a description of the project.",
+    repoLink: "https://github.com/rain-jar/Jobs-Site.git",
+    videoURL: "DQacCB9tDaw&ab",
   },
 
   // Add more projects here
@@ -202,30 +217,93 @@ const ProjectsPage = () => {
 
       {/* Dialog for displaying more information */}
       {selectedProject && (
-        <Dialog open={openDialog} onClose={handleCloseDialog}>
-          <DialogTitle>{selectedProject.title}</DialogTitle>
-          <DialogContent>
-            <Typography>{selectedProject.description}</Typography>
-            <Typography variant="body2" sx={{ mt: 2 }}>
-              Technologies used:
-            </Typography>
-            <ul>
-              {selectedProject.technologies.map((tech, index) => (
-                <li key={index}>
-                  <Typography variant="body2">{tech}</Typography>
-                </li>
-              ))}
-            </ul>
-          </DialogContent>
-          <DialogActions>
-            <Button
+        <Dialog open={openDialog} onClose={handleCloseDialog} fullWidth maxWidth="600" PaperProps={{
+          sx: {  // Adjusts width to 75% of viewport width for 3:4 ratio
+            height: "calc(100vw * 1/2)",  // Calculates height based on width for 3:4 ratio
+          },
+        }}>
+
+          <DialogContent sx={{
+            backgroundImage: "linear-gradient(to right bottom, #838383, #2e2e2e)"
+          }}>
+
+            {/* Close button in the top-right corner */}
+            <IconButton
+              aria-label="close"
               onClick={handleCloseDialog}
-              variant="contained"
-              color="primary"
+              sx={{
+                position: "absolute",
+                right: 0.4,
+                top: 0.4,
+                color: (theme) => theme.palette.grey[500],
+              }}
             >
-              Close
-            </Button>
-          </DialogActions>
+              <CloseIcon />
+            </IconButton>
+
+            {/* Two-column grid layout */}
+            <Stack spacing={2} direction="row" sx={{
+              width: "100%",
+              height : "100%",
+              padding: 0,
+            }}>
+              {/* Left column (70%) for YouTube video */}
+              <Stack item xs={12} md={10} sx={{ width: "80%"}}>
+                <YouTubeEmbed videoUrl={selectedProject.videoURL} />
+              </Stack>
+
+              {/* Right column (30%) for project details */}
+              <Stack item xs={12} md={2} sx={{
+                color: "white",
+                justifyItems : "center",
+                paddingTop: "200px",
+              }}>
+                {/* Project Title */}
+                <Typography variant="h6" gutterBottom>
+                  {selectedProject.title}
+                </Typography>
+
+                {/* Technologies Used */}
+                <Typography variant="body1" gutterBottom>
+                  <strong>Technologies Used:</strong>
+                </Typography>
+                <ul>
+                  {selectedProject.technologies.map((tech, index) => (
+                    <li key={index}>
+                      <Typography variant="body2">{tech}</Typography>
+                    </li>
+                  ))}
+                </ul>
+
+                {/* Project Description */}
+                <Typography variant="caption" gutterBottom>
+                  <strong>Description:</strong>
+                </Typography>
+                <Typography variant="caption" gutterBottom>
+                  {selectedProject.description}
+                </Typography>
+
+                {/* Source Code Button */}
+                <Button
+                  variant="BUTTON"
+                  color="primary"
+                  borderRadius="60px"
+                  href={selectedProject.repoLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  sx={{ 
+                    width : "80%",
+                    marginTop: "16px",  
+                    backgroundImage: "linear-gradient(to right bottom, #44b2e6, #05044d)",
+                  }}
+                >
+                  Source Code
+                </Button>
+
+              </Stack>
+
+            </Stack>
+          </DialogContent>
         </Dialog>
       )}
     </div>

@@ -4,8 +4,8 @@ body {
   font-family-data: 'Source Sans Pro','Trebuchet MS',sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #1a1a1a;
-  color: #B6B5AF;
+  background-color: #1E0E0B; /*Alt - 1a1a1a*/
+  color: #D9CCAD; /*Alt - B6B5AF */
 }
 
 .app {
@@ -21,12 +21,12 @@ body {
   align-items: center;
   margin-bottom: 0px;
   font-size: 1.5em;
-  font-color : #6C7BAC;
-  border-bottom : 0.5px solid #555;
+  font-color : #D9CCAD;
+  border-bottom : 0.5px solid #D9CCAD;
 }
 
 .logo a {
-  color: #9ba4d4;
+  color: #D9CCAD;
   text-decoration: none;
   font-size: 1.2em;
 }
@@ -43,7 +43,7 @@ nav ul li {
 }
 
 nav ul li a {
-  color: #9ba4d4;
+  color: #D9CCAD;
   text-decoration: none;
 }
 

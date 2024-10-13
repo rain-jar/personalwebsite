@@ -6,7 +6,8 @@ const LandingPage = () => {
       <h1 className="maintitle">
         {" "}
         Raj Nair
-        <small className="pronunciation">[ ra • aj - naa • yer ]</small>
+        {/*<small className="pronunciation">[ ra • aj - naa • yer ]</small>*/}
+        <small className="pronunciation">Son • Engineer • Curious </small>
       </h1>
       <p className="bio">
         I'm an aspiring AI Developer based in Canada. This space is used to
