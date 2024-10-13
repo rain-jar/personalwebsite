@@ -38,11 +38,11 @@ const projects = [
     videoURL: "DQacCB9tDaw&ab",
   },
   {
-    title: "Coming Soon",
-    technologies: ["React", "Django", "MySQL"],
-    image: "logo512.png",
+    title: "Decision Llama",
+    technologies: ["React", "Material UI", "Framer Motion"],
+    image: "/decisionLlama.png",
     description: "This is a description of the project.",
-    repoLink: "https://github.com/rain-jar/Jobs-Site.git",
+    repoLink: "https://decisionllama.vercel.app/",
     videoURL: "DQacCB9tDaw&ab",
   },
   {
