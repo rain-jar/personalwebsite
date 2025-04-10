@@ -25,7 +25,7 @@ const projects = [
     image: "/NWSL.png",
     description: "Fantasy League App for Women's Soccer",
     repoLink: "https://www.wosofantasy.com/",
-    videoURL: "DQacCB9tDaw&ab",
+    videoURL: "app-preview-desktop.mp4",
   },
   {
     title: "Silk Mantra",
@@ -33,7 +33,7 @@ const projects = [
     image: "/SM-Logo.png",
     description: "Online Clothing Brand Store for Indian Sarees",
     repoLink: "https://silkmantra.vercel.app/",
-    videoURL: "DQacCB9tDaw&ab",
+    videoURL: "SilkMantra.mp4",
   },
   {
     title: "Decision Llama",
@@ -41,7 +41,7 @@ const projects = [
     image: "/decisionLlama.png",
     description: "This is a description of the project.",
     repoLink: "https://decisionllama.vercel.app/",
-    videoURL: "DQacCB9tDaw&ab",
+    videoURL: "DecisionLlama.mp4",
   },
   {
     title: "JOB PORTAL",
@@ -249,7 +249,9 @@ const ProjectsPage = () => {
             }}>
               {/* Left column (70%) for YouTube video */}
               <Stack item xs={12} md={10} sx={{ width: "80%"}}>
-                <YouTubeEmbed videoUrl={selectedProject.videoURL} />
+                <video controls autoPlay muted playsInline width="100%" height="100%">
+                  <source src={selectedProject.videoURL} type="video/mp4" />
+                </video>
               </Stack>
 
               {/* Right column (30%) for project details */}
