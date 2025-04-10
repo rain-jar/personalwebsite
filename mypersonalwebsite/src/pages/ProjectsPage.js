@@ -30,11 +30,19 @@ const projects = [
   },
 
   {
-    title: "Lavie514",
-    technologies: ["HTML/CSS", "React/Redux", "NodeJS/Express", "PostgreSQL"],
-    image: "/MTL.png",
-    description: "This is a description of the project.",
-    repoLink: "https://github.com/rain-jar/Jobs-Site.git",
+    title: "NWSL Fantasy",
+    technologies: ["React Native", "NodeJS/Express", "PostgreSQL", "Supabase"],
+    image: "/NWSL.png",
+    description: "Fantasy League App for Women's Soccer",
+    repoLink: "https://www.wosofantasy.com/",
+    videoURL: "DQacCB9tDaw&ab",
+  },
+  {
+    title: "Silk Mantra",
+    technologies: ["Next.js", "Tailwind CSS", "Express", "Neon"],
+    image: "/SM-Logo.png",
+    description: "Online Clothing Brand Store for Indian Sarees",
+    repoLink: "https://silkmantra.vercel.app/",
     videoURL: "DQacCB9tDaw&ab",
   },
   {
@@ -45,19 +53,11 @@ const projects = [
     repoLink: "https://decisionllama.vercel.app/",
     videoURL: "DQacCB9tDaw&ab",
   },
-  {
-    title: "Coming Soon",
-    technologies: ["React", "Socket.io", "NodeJS", "PostgreSQL"],
-    image: "logo512.png",
-    description: "This is a description of the project.",
-    repoLink: "https://github.com/rain-jar/Jobs-Site.git",
-    videoURL: "DQacCB9tDaw&ab",
-  },
 
   {
-    title: "Coming Soon",
-    technologies: ["React", "Socket.io", "NodeJS", "PostgreSQL"],
-    image: "logo512.png",
+    title: "Lavie514",
+    technologies: ["HTML/CSS", "React/Redux", "NodeJS/Express", "PostgreSQL"],
+    image: "/MTL.png",
     description: "This is a description of the project.",
     repoLink: "https://github.com/rain-jar/Jobs-Site.git",
     videoURL: "DQacCB9tDaw&ab",
