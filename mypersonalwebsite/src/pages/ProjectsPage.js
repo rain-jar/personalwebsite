@@ -20,16 +20,6 @@ import CloseIcon from "@mui/icons-material/Close";
 
 const projects = [
   {
-    title: "JOB PORTAL",
-    technologies: ["HTML/CSS", "React", "NodeJS", "Vercel"],
-    image: "/JobPortal-Project.png", // You can replace this with actual images or icons later
-    description:
-      "A job portal website that allows users to post jobs and search for jobs based on their skills.",
-    repoLink: "https://github.com/rain-jar/Jobs-Site.git",
-    videoURL: "s4ygLKsONGg&ab",
-  },
-
-  {
     title: "NWSL Fantasy",
     technologies: ["React Native", "NodeJS/Express", "PostgreSQL", "Supabase"],
     image: "/NWSL.png",
@@ -53,7 +43,15 @@ const projects = [
     repoLink: "https://decisionllama.vercel.app/",
     videoURL: "DQacCB9tDaw&ab",
   },
-
+  {
+    title: "JOB PORTAL",
+    technologies: ["HTML/CSS", "React", "NodeJS", "Vercel"],
+    image: "/JobPortal-Project.png", // You can replace this with actual images or icons later
+    description:
+      "A job portal website that allows users to post jobs and search for jobs based on their skills.",
+    repoLink: "https://github.com/rain-jar/Jobs-Site.git",
+    videoURL: "s4ygLKsONGg&ab",
+  },
   {
     title: "Lavie514",
     technologies: ["HTML/CSS", "React/Redux", "NodeJS/Express", "PostgreSQL"],
@@ -299,7 +297,7 @@ const ProjectsPage = () => {
                     backgroundImage: "linear-gradient(to right bottom, #44b2e6, #05044d)",
                   }}
                 >
-                  Source Code
+                  App Site
                 </Button>
 
               </Stack>
