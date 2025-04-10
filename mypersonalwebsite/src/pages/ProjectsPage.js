@@ -33,7 +33,7 @@ const projects = [
     image: "/SM-Logo.png",
     description: "Online Clothing Brand Store for Indian Sarees",
     repoLink: "https://silkmantra.vercel.app/",
-    videoURL: "SilkMantra.mp4",
+    videoURL: "SilkMantra-new.mp4",
   },
   {
     title: "Decision Llama",
@@ -41,7 +41,7 @@ const projects = [
     image: "/decisionLlama.png",
     description: "This is a description of the project.",
     repoLink: "https://decisionllama.vercel.app/",
-    videoURL: "DecisionLlama.mp4",
+    videoURL: "decisionllama-new.mp4",
   },
   {
     title: "JOB PORTAL",
