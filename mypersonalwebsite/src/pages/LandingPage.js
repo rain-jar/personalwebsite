@@ -16,7 +16,7 @@ const LandingPage = () => {
       </p>
       <p className="contact">
         My email is{" "}
-        <a href="mailto:rajrnair90@gmail.com">contact@curiousjar.com</a>.
+        <a href="mailto:rajrnair90@gmail.com">itscuriousjar@gmail.com</a>.
       </p>
     </div>
   );

@@ -44,12 +44,12 @@ const projects = [
     videoURL: "decisionllama-new.mp4",
   },
   {
-    title: "JOB PORTAL",
-    technologies: ["HTML/CSS", "React", "NodeJS", "Vercel"],
+    title: "BloodBuds",
+    technologies: ["P2P Network", "for connecting", "blood donors/requestors", "across India"],
     image: "/JobPortal-Project.png", // You can replace this with actual images or icons later
     description:
-      "A job portal website that allows users to post jobs and search for jobs based on their skills.",
-    repoLink: "https://github.com/rain-jar/Jobs-Site.git",
+      "Its a peer to peer community driven network across India for connecting blood donors to those in need",
+    repoLink: "",
     videoURL: "s4ygLKsONGg&ab",
   },
   {
@@ -57,7 +57,7 @@ const projects = [
     technologies: ["HTML/CSS", "React/Redux", "NodeJS/Express", "PostgreSQL"],
     image: "/MTL.png",
     description: "This is a description of the project.",
-    repoLink: "https://github.com/rain-jar/Jobs-Site.git",
+    repoLink: "https://www.instagram.com/blood.buds/",
     videoURL: "DQacCB9tDaw&ab",
   },
 
