@@ -45,7 +45,7 @@ function App() {
         <main>
           <Routes>
             <Route path="/" element={<LandingPage />} />
-            <Route path="/blog" element={<BlogPage blogs={blogs} />} />
+          {/*  <Route path="/blog" element={<BlogPage blogs={blogs} />} />*/}
             <Route path="/projects" element={<ProjectsPage />} />
             {blogs.map((blog) => (
               <Route

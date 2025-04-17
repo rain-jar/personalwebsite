@@ -46,18 +46,18 @@ const projects = [
   {
     title: "BloodBuds",
     technologies: ["P2P Network", "for connecting", "blood donors/requestors", "across India"],
-    image: "/JobPortal-Project.png", // You can replace this with actual images or icons later
+    image: "/bloodbuds.png", // You can replace this with actual images or icons later
     description:
       "Its a peer to peer community driven network across India for connecting blood donors to those in need",
-    repoLink: "",
+    repoLink: "https://www.instagram.com/blood.buds/",
     videoURL: "s4ygLKsONGg&ab",
   },
   {
-    title: "Lavie514",
-    technologies: ["HTML/CSS", "React/Redux", "NodeJS/Express", "PostgreSQL"],
-    image: "/MTL.png",
-    description: "This is a description of the project.",
-    repoLink: "https://www.instagram.com/blood.buds/",
+    title: "LavieMTL",
+    technologies: ["The front page", "for", "Montreal Communities", "Meet.Try.Live"],
+    image: "/laviemtl.png",
+    description: "Where we bring together and showcase the different communities of Montreal so peopel can MTL(Meet.Try.Live)",
+    repoLink: "https://www.instagram.com/lavieenmtl/",
     videoURL: "DQacCB9tDaw&ab",
   },
 
@@ -200,13 +200,15 @@ const ProjectsPage = () => {
                     <Typography variant="body1" sx={{ mb: 2 }}>
                       {project.description}
                     </Typography>
+                    
                     <Button
                       onClick={() => handleOpenDialog(project)}
                       variant="contained"
                       style={{ backgroundColor: "grey" }}
                     >
-                      Demo
+                      Know More
                     </Button>
+                  
                   </Card>
                 </div>
               </div>
@@ -247,26 +249,36 @@ const ProjectsPage = () => {
               height : "100%",
               padding: 0,
             }}>
-              {/* Left column (70%) for YouTube video */}
+              {/* Left column (70%) for YouTube video*/}
               <Stack item xs={12} md={10} sx={{ width: "80%"}}>
                 <video controls autoPlay muted playsInline width="100%" height="100%">
                   <source src={selectedProject.videoURL} type="video/mp4" />
                 </video>
+                {/* Source Code Button */}
               </Stack>
+              
 
               {/* Right column (30%) for project details */}
               <Stack item xs={12} md={2} sx={{
                 color: "white",
                 justifyItems : "center",
-                paddingTop: "200px",
+                paddingTop: "0px",
               }}>
                 {/* Project Title */}
                 <Typography variant="h6" gutterBottom>
                   {selectedProject.title}
                 </Typography>
 
-                {/* Technologies Used */}
-                <Typography variant="body1" gutterBottom>
+                {/* Project Description */}
+                <Typography variant="body2" gutterBottom>
+                  <strong>Description:</strong>
+                </Typography>
+                <Typography variant="caption" gutterBottom>
+                  {selectedProject.description}
+                </Typography>
+
+                {/* Technologies Used
+                <Typography variant="body2" gutterBottom>
                   <strong>Technologies Used:</strong>
                 </Typography>
                 <ul>
@@ -276,17 +288,9 @@ const ProjectsPage = () => {
                     </li>
                   ))}
                 </ul>
+                */}
 
-                {/* Project Description */}
-                <Typography variant="caption" gutterBottom>
-                  <strong>Description:</strong>
-                </Typography>
-                <Typography variant="caption" gutterBottom>
-                  {selectedProject.description}
-                </Typography>
-
-                {/* Source Code Button */}
-                <Button
+<Button
                   variant="BUTTON"
                   color="primary"
                   borderRadius="60px"
@@ -296,12 +300,12 @@ const ProjectsPage = () => {
                   sx={{ 
                     width : "80%",
                     marginTop: "16px",  
+                    color:"white",
                     backgroundImage: "linear-gradient(to right bottom, #44b2e6, #05044d)",
                   }}
                 >
                   App Site
                 </Button>
-
               </Stack>
 
             </Stack>

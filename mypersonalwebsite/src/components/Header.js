@@ -9,9 +9,11 @@ const Header = () => {
       </div>
       <nav>
         <ul>
+          {/*
           <li>
             <Link to="/blog">Blogs</Link>
           </li>
+          */}
           <li>
             <Link to="/projects">Projects</Link>
           </li>
