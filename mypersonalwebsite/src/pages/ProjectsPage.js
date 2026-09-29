@@ -9,10 +9,8 @@ import {
   Button,
   Dialog,
   DialogContent,
-  DialogActions,
   IconButton,
 } from "@mui/material";
-import YouTubeEmbed from "./YouTubeEmbed";
 import CloseIcon from "@mui/icons-material/Close";
 
 
