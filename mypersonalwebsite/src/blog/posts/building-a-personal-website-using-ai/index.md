@@ -4,7 +4,7 @@ summary: What happened when I treated AI as a collaboratorâ€”not a magic buttonâ
 publishedAt: 2024-09-19
 readingTime: 8
 category: Building in public
-featured: true
+featured: false
 ---
 
 I had wanted a personal website for years. Not a portfolio assembled from a template, but a place that felt like mine: a record of projects, questions, and things I was still figuring out.

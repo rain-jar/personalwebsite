@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title description">
+  <title id="title">A real-world AI program workflow</title>
+  <desc id="description">Business data becomes a prompt, is sent to an AI model through an API, returns generated output, and is used in a program.</desc>
+  <rect width="1200" height="760" fill="#170b09"/>
+  <g stroke="#d9ccad" stroke-opacity="0.07">
+    <path d="M0 76h1200M0 152h1200M0 228h1200M0 304h1200M0 380h1200M0 456h1200M0 532h1200M0 608h1200M0 684h1200"/>
+    <path d="M100 0v760M200 0v760M300 0v760M400 0v760M500 0v760M600 0v760M700 0v760M800 0v760M900 0v760M1000 0v760M1100 0v760"/>
+  </g>
+  <text x="600" y="70" fill="#d9ccad" font-family="Georgia, serif" font-size="38" text-anchor="middle">From business data to a useful output</text>
+  <g fill="#1e0e0b" stroke="#d9ccad" stroke-opacity="0.38" stroke-width="2">
+    <rect x="155" y="128" width="890" height="88" rx="4"/>
+    <rect x="155" y="252" width="890" height="88" rx="4"/>
+    <rect x="155" y="376" width="890" height="88" rx="4"/>
+    <rect x="155" y="500" width="890" height="88" rx="4"/>
+    <rect x="155" y="624" width="890" height="88" rx="4"/>
+  </g>
+  <g font-family="system-ui, sans-serif">
+    <g fill="#9ba4d4" font-size="17" letter-spacing="2" text-anchor="middle">
+      <text x="220" y="180">01</text><text x="220" y="304">02</text><text x="220" y="428">03</text><text x="220" y="552">04</text><text x="220" y="676">05</text>
+    </g>
+    <g fill="#d9ccad" font-size="27">
+      <text x="290" y="181">Takes Business data</text>
+      <text x="290" y="305">Constructs a prompt</text>
+      <text x="290" y="429">Calls an AI model through an API</text>
+      <text x="290" y="553">Receives generated output</text>
+      <text x="290" y="677">Uses that output in your program</text>
+    </g>
+  </g>
+  <g fill="none" stroke="#9ba4d4" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M600 216v24"/><path d="m590 228 10 12 10-12"/>
+    <path d="M600 340v24"/><path d="m590 352 10 12 10-12"/>
+    <path d="M600 464v24"/><path d="m590 476 10 12 10-12"/>
+    <path d="M600 588v24"/><path d="m590 600 10 12 10-12"/>
+  </g>
+</svg>

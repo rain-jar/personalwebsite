@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 780" role="img" aria-labelledby="title description">
+  <title id="title">The complete Python and OpenAI API loop</title>
+  <desc id="description">A customer note moves through a Python prompt, the Responses API, GPT-5.6, and back to the terminal.</desc>
+  <rect width="1200" height="780" fill="#170b09"/>
+  <g stroke="#d9ccad" stroke-opacity="0.07">
+    <path d="M0 78h1200M0 156h1200M0 234h1200M0 312h1200M0 390h1200M0 468h1200M0 546h1200M0 624h1200M0 702h1200"/>
+    <path d="M100 0v780M200 0v780M300 0v780M400 0v780M500 0v780M600 0v780M700 0v780M800 0v780M900 0v780M1000 0v780M1100 0v780"/>
+  </g>
+  <text x="600" y="72" fill="#d9ccad" font-family="Georgia, serif" font-size="38" text-anchor="middle">The complete loop</text>
+  <g fill="#1e0e0b" stroke="#d9ccad" stroke-opacity="0.38" stroke-width="2">
+    <rect x="85" y="145" width="300" height="118" rx="4"/>
+    <rect x="450" y="145" width="300" height="118" rx="4"/>
+    <rect x="815" y="145" width="300" height="118" rx="4"/>
+    <rect x="815" y="425" width="300" height="118" rx="4"/>
+    <rect x="450" y="425" width="300" height="118" rx="4"/>
+    <rect x="85" y="425" width="300" height="118" rx="4"/>
+    <rect x="450" y="620" width="300" height="92" rx="4"/>
+  </g>
+  <g fill="#d9ccad" font-family="system-ui, sans-serif" text-anchor="middle">
+    <text x="235" y="190" font-size="18" letter-spacing="2">INPUT</text><text x="235" y="229" font-size="25">customer_note</text>
+    <text x="600" y="190" font-size="18" letter-spacing="2">PYTHON</text><text x="600" y="229" font-size="25">Constructs prompt</text>
+    <text x="965" y="190" font-size="18" letter-spacing="2">REQUEST</text><text x="965" y="229" font-size="25">responses.create()</text>
+    <text x="965" y="470" font-size="18" letter-spacing="2">INTERFACE</text><text x="965" y="509" font-size="25">OpenAI API</text>
+    <text x="600" y="470" font-size="18" letter-spacing="2">MODEL</text><text x="600" y="509" font-size="25">GPT-5.6</text>
+    <text x="235" y="470" font-size="18" letter-spacing="2">OUTPUT</text><text x="235" y="509" font-size="25">response</text>
+    <text x="600" y="657" font-size="18" letter-spacing="2">DISPLAY</text><text x="600" y="692" font-size="25">Terminal</text>
+  </g>
+  <g fill="none" stroke="#9ba4d4" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M385 204h53"/><path d="m426 194 12 10-12 10"/>
+    <path d="M750 204h53"/><path d="m791 194 12 10-12 10"/>
+    <path d="M965 263v144"/><path d="m955 395 10 12 10-12"/>
+    <path d="M815 484h-53"/><path d="m774 474-12 10 12 10"/>
+    <path d="M450 484h-53"/><path d="m409 474-12 10 12 10"/>
+    <path d="M235 543v123h203"/><path d="m426 656 12 10-12 10"/>
+  </g>
+</svg>

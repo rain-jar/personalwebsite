@@ -43,6 +43,22 @@ function validatePost(slug, data, sourcePath) {
   if (data.featured !== undefined && typeof data.featured !== "boolean") {
     fail(`${sourcePath}: optional "featured" must be true or false.`);
   }
+
+  if (data.featuredImage !== undefined && (typeof data.featuredImage !== "string" || data.featuredImage.trim() === "")) {
+    fail(`${sourcePath}: optional "featuredImage" must be a non-empty string.`);
+  }
+
+  if (data.featuredImageAlt !== undefined && (typeof data.featuredImageAlt !== "string" || data.featuredImageAlt.trim() === "")) {
+    fail(`${sourcePath}: optional "featuredImageAlt" must be a non-empty string.`);
+  }
+
+  if (data.featuredImage && !data.featuredImageAlt) {
+    fail(`${sourcePath}: "featuredImageAlt" is required when "featuredImage" is set.`);
+  }
+
+  if (data.featuredImageAlt && !data.featuredImage) {
+    fail(`${sourcePath}: "featuredImage" is required when "featuredImageAlt" is set.`);
+  }
 }
 
 function readPosts() {
@@ -86,6 +102,8 @@ function readPosts() {
       readingTime: data.readingTime,
       category: data.category?.trim() || null,
       featured: data.featured ?? false,
+      featuredImage: data.featuredImage?.trim() || null,
+      featuredImageAlt: data.featuredImageAlt?.trim() || null,
       content: parsed.content.trim(),
     };
   });

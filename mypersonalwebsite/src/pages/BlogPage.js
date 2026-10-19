@@ -54,9 +54,15 @@ const BlogPage = ({ blogs }) => {
               <span>{featuredPost.readingTime} min read</span>
             </p>
           </div>
-          <div className="blog-featured-art" aria-hidden="true">
-            <span>idea</span><i>→</i><span>prompt</span><i>→</i><span>website</span>
-          </div>
+          {featuredPost.featuredImage ? (
+            <div className="blog-featured-art has-image">
+              <img src={featuredPost.featuredImage} alt={featuredPost.featuredImageAlt} />
+            </div>
+          ) : (
+            <div className="blog-featured-art" aria-hidden="true">
+              <span>idea</span><i>→</i><span>prompt</span><i>→</i><span>website</span>
+            </div>
+          )}
         </Link>
       )}
 
