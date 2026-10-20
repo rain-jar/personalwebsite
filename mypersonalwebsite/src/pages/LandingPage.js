@@ -10,9 +10,9 @@ const LandingPage = () => {
         <small className="pronunciation">Son • Engineer • Curious </small>
       </h1>
       <p className="bio">
-        I'm an aspiring AI Developer based in Canada. This space is used to
-        document my personal projects and endeavors. My most recent project is
-        Lavie514.
+        I'm an AI Enthusiast and Developer based in Canada. This space is used
+        to document my personal projects and endeavors. My most recent project
+        is NWSL Fantasy.
       </p>
       <p className="contact">
         My email is{" "}
