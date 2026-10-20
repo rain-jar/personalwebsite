@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title description">
+  <title id="title">Instagram content becomes a curated daily digest</title>
+  <desc id="description">A three-step diagram showing Instagram content moving through Muse into a daily digest.</desc>
+  <rect width="1200" height="675" fill="#170b09"/>
+  <g stroke="#d9ccad" stroke-opacity="0.08">
+    <path d="M0 75h1200M0 150h1200M0 225h1200M0 300h1200M0 375h1200M0 450h1200M0 525h1200M0 600h1200"/>
+    <path d="M100 0v675M200 0v675M300 0v675M400 0v675M500 0v675M600 0v675M700 0v675M800 0v675M900 0v675M1000 0v675M1100 0v675"/>
+  </g>
+  <text x="600" y="122" fill="#d9ccad" font-family="Georgia, serif" font-size="40" text-anchor="middle">Your feed, edited for you</text>
+  <g fill="#1e0e0b" stroke="#d9ccad" stroke-opacity="0.38" stroke-width="2">
+    <rect x="70" y="255" width="280" height="160" rx="4"/>
+    <rect x="460" y="255" width="280" height="160" rx="4"/>
+    <rect x="850" y="255" width="280" height="160" rx="4"/>
+  </g>
+  <g fill="#d9ccad" font-family="system-ui, sans-serif" text-anchor="middle">
+    <text x="210" y="314" font-size="17" letter-spacing="3">SOURCE</text>
+    <text x="210" y="366" font-size="30">Instagram</text>
+    <text x="600" y="314" font-size="17" letter-spacing="3">CURATOR</text>
+    <text x="600" y="366" font-size="30">Muse</text>
+    <text x="990" y="314" font-size="17" letter-spacing="3">DELIVERY</text>
+    <text x="990" y="366" font-size="30">Daily Digest</text>
+  </g>
+  <g fill="none" stroke="#9ba4d4" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M350 335h92"/><path d="m430 323 14 12-14 12"/>
+    <path d="M740 335h92"/><path d="m820 323 14 12-14 12"/>
+  </g>
+  <text x="600" y="535" fill="#9ba4d4" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" letter-spacing="2" text-anchor="middle">FOLLOWING-ONLY · READ-ONLY · FEEDBACK-DRIVEN</text>
+</svg>

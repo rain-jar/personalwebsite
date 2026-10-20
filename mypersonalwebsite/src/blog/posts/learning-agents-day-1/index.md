@@ -4,7 +4,7 @@ summary: Day 1 - Learning how language models, tokens, prompts, and APIs come to
 publishedAt: 2026-10-02
 readingTime: 8
 category: Building Agents
-featured: true
+featured: false
 featuredImage: /blog-media/learning-agents-day-1/api-round-trip.svg
 featuredImageAlt: The complete loop from a customer note through Python and the OpenAI API to a terminal response.
 ---

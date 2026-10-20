@@ -12,12 +12,21 @@ test('renders generated posts on the blog index', () => {
   render(<App />);
   expect(screen.getByRole('heading', { name: 'Writing' })).toBeInTheDocument();
   expect(screen.getByRole('heading', { name: 'Contents' })).toBeInTheDocument();
-  expect(screen.getByText('1 post')).toBeInTheDocument();
-  expect(screen.getByLabelText(/Featured post: Learning Agents - Day 1/i)).toBeInTheDocument();
-  expect(screen.getByRole('img', { name: /complete loop from a customer note/i })).toHaveAttribute(
+  expect(screen.getByText('2 posts')).toBeInTheDocument();
+  expect(screen.getByLabelText(/Featured post: The Instagram Daily Digest/i)).toBeInTheDocument();
+  expect(screen.getByRole('img', { name: /instagram content moving through muse/i })).toHaveAttribute(
     'src',
-    '/blog-media/learning-agents-day-1/api-round-trip.svg'
+    '/blog-media/instagram-daily-digest-template/featured-workflow.svg'
   );
+});
+
+test('renders the featured Instagram Daily Digest article', () => {
+  window.history.pushState({}, '', '/blog/instagram-daily-digest-template');
+  render(<App />);
+  expect(screen.getByRole('heading', { name: 'The Instagram Daily Digest — A Template for Your Own Muse' })).toBeInTheDocument();
+  expect(screen.getByRole('heading', { name: 'The Master Prompt' })).toBeInTheDocument();
+  expect(screen.getByRole('heading', { name: 'A lighter version' })).toBeInTheDocument();
+  expect(screen.getByText('Build me a daily Instagram digest.', { exact: false })).toBeInTheDocument();
 });
 
 test('renders the featured Learning Agents article', () => {
