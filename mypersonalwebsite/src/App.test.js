@@ -12,7 +12,7 @@ test('renders generated posts on the blog index', () => {
   render(<App />);
   expect(screen.getByRole('heading', { name: 'Writing' })).toBeInTheDocument();
   expect(screen.getByRole('heading', { name: 'Contents' })).toBeInTheDocument();
-  expect(screen.getByText('2 posts')).toBeInTheDocument();
+  expect(screen.getByText('3 posts')).toBeInTheDocument();
   expect(screen.getByLabelText(/Featured post: The Instagram Daily Digest/i)).toBeInTheDocument();
   expect(screen.getByRole('img', { name: /instagram content moving through muse/i })).toHaveAttribute(
     'src',
@@ -36,6 +36,15 @@ test('renders the featured Learning Agents article', () => {
   expect(screen.getByRole('img', { name: /complete loop from a customer note/i })).toBeInTheDocument();
   expect(screen.getByRole('img', { name: /business workflow that takes data/i })).toBeInTheDocument();
   expect(screen.getAllByText('response = client.responses.create(', { exact: false })).toHaveLength(2);
+});
+
+test('renders the Giving Time article', () => {
+  window.history.pushState({}, '', '/blog/giving-time');
+  render(<App />);
+  expect(screen.getByRole('heading', { name: 'Giving Time' })).toBeInTheDocument();
+  expect(screen.queryByText(/small amount of time can be the most meaningful gift/i)).not.toBeInTheDocument();
+  expect(screen.getByText(/time is the most precious thing any of us have/i)).toBeInTheDocument();
+  expect(screen.getByText(/made me reconsider my philosophy on giving time/i)).toBeInTheDocument();
 });
 
 test('renders a not-found state for an unknown post', () => {

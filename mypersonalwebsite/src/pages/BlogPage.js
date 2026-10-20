@@ -45,7 +45,9 @@ const BlogPage = ({ blogs }) => {
               Featured{featuredPost.category ? ` · ${featuredPost.category}` : ""}
             </p>
             <h2>{featuredPost.title}</h2>
-            <p className="blog-featured-summary">{featuredPost.summary}</p>
+            {featuredPost.summary && (
+              <p className="blog-featured-summary">{featuredPost.summary}</p>
+            )}
             <p className="blog-post-meta">
               <time dateTime={featuredPost.publishedAt}>
                 {formatPostDateLong(featuredPost.publishedAt)}
@@ -82,7 +84,9 @@ const BlogPage = ({ blogs }) => {
                 <Link className="blog-post-row" to={`/blog/${post.slug}`} key={post.slug}>
                   <span>
                     <span className="blog-post-title">{post.title}</span>
-                    <span className="blog-post-summary">{post.summary}</span>
+                    {post.summary && (
+                      <span className="blog-post-summary">{post.summary}</span>
+                    )}
                   </span>
                   <span className="blog-post-data">
                     <time dateTime={post.publishedAt}>{formatPostDateShort(post.publishedAt)}</time>

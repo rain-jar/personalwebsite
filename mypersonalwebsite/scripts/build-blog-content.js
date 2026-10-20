@@ -6,7 +6,7 @@ const projectRoot = path.resolve(__dirname, "..");
 const postsDirectory = path.join(projectRoot, "src", "blog", "posts");
 const outputDirectory = path.join(projectRoot, "src", "blog", "generated");
 const outputFile = path.join(outputDirectory, "posts.js");
-const requiredTextFields = ["title", "summary", "publishedAt"];
+const requiredTextFields = ["title", "publishedAt"];
 
 function fail(message) {
   throw new Error(`[blog:build] ${message}`);
@@ -38,6 +38,10 @@ function validatePost(slug, data, sourcePath) {
 
   if (data.category !== undefined && (typeof data.category !== "string" || data.category.trim() === "")) {
     fail(`${sourcePath}: optional "category" must be a non-empty string.`);
+  }
+
+  if (data.summary !== undefined && (typeof data.summary !== "string" || data.summary.trim() === "")) {
+    fail(`${sourcePath}: optional "summary" must be a non-empty string.`);
   }
 
   if (data.featured !== undefined && typeof data.featured !== "boolean") {
@@ -97,7 +101,7 @@ function readPosts() {
     return {
       slug,
       title: data.title.trim(),
-      summary: data.summary.trim(),
+      summary: data.summary?.trim() || null,
       publishedAt: data.publishedAt,
       readingTime: data.readingTime,
       category: data.category?.trim() || null,

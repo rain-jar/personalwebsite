@@ -64,7 +64,7 @@ const EachBlog = ({ posts }) => {
       <header className="blog-article-header">
         {post.category && <p className="blog-eyebrow">{post.category}</p>}
         <h1 className="blog-article-title">{post.title}</h1>
-        <p className="blog-article-deck">{post.summary}</p>
+        {post.summary && <p className="blog-article-deck">{post.summary}</p>}
         <p className="blog-post-meta">
           <time dateTime={post.publishedAt}>{formatPostDateLong(post.publishedAt)}</time>
           <span aria-hidden="true">·</span>
