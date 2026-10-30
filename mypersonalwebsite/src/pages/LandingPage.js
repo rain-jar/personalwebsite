@@ -10,8 +10,9 @@ const LandingPage = () => {
         <small className="pronunciation">Son • Engineer • Curious </small>
       </h1>
       <p className="bio">
-        SaaS Solutions Engineer turned Applied-AI Builder. Building, breaking, debugging Agentic LLM systems. My most recent project
-        is NWSL Fantasy.
+        SaaS Solutions Engineer turned Applied-AI Builder. 
+        Building, breaking, debugging Agentic LLM systems. 
+        Most recent project is NWSL Fantasy.
       </p>
       <p className="contact">
         Reach me at {" "}
