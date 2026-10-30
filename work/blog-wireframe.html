@@ -1,0 +1,325 @@
+<style>
+  .blog-viz-stage {
+    min-height: 920px;
+    color: #e9e7df;
+    background: #111312;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    overflow: hidden;
+  }
+  .blog-viz-stage * { box-sizing: border-box; }
+  .blog-viz-stage button { font: inherit; }
+  .quiet-shell, .notebook-shell { min-height: 920px; }
+
+  .quiet-shell {
+    --quiet-accent: #d6ff54;
+    --quiet-content: 680px;
+    background:
+      radial-gradient(circle at 75% 0%, rgba(214,255,84,.055), transparent 30rem),
+      #111312;
+  }
+  .quiet-nav {
+    height: 72px;
+    padding: 0 clamp(22px, 5vw, 74px);
+    border-bottom: 1px solid #292c29;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .quiet-brand { color: #f5f4ed; font-weight: 700; letter-spacing: -.03em; }
+  .quiet-links { display: flex; align-items: center; gap: 25px; color: #a5aaa3; font-size: 14px; }
+  .quiet-links span:last-child { color: var(--quiet-accent); }
+  .quiet-view-toggle {
+    display: flex;
+    gap: 4px;
+    padding: 4px;
+    border: 1px solid #30332f;
+    border-radius: 99px;
+    background: #171917;
+  }
+  .quiet-view-toggle button {
+    color: #a9ada6;
+    border: 0;
+    background: transparent;
+    border-radius: 99px;
+    padding: 7px 12px;
+    cursor: pointer;
+  }
+  .quiet-view-toggle button[aria-pressed="true"] { color: #10120f; background: var(--quiet-accent); }
+  .quiet-main { width: min(1120px, calc(100% - 44px)); margin: 0 auto; padding: 75px 0 110px; }
+  .quiet-eyebrow { color: var(--quiet-accent); text-transform: uppercase; font-size: 11px; letter-spacing: .16em; font-weight: 700; }
+  .quiet-index-head { display: grid; grid-template-columns: 1.3fr .7fr; gap: 60px; align-items: end; margin-bottom: 72px; }
+  .quiet-index-head h1 { font-family: Georgia, serif; font-size: clamp(52px, 7vw, 90px); line-height: .94; letter-spacing: -.055em; font-weight: 500; margin: 16px 0 0; }
+  .quiet-index-head p { color: #a8aca5; line-height: 1.75; max-width: 410px; margin: 0; }
+  .quiet-feature { border-top: 1px solid #343733; border-bottom: 1px solid #343733; padding: 36px 0; display: grid; grid-template-columns: 1fr 1.2fr; gap: 50px; align-items: center; }
+  .quiet-feature-art { aspect-ratio: 16/10; border-radius: 3px; overflow: hidden; background: #252925; position: relative; }
+  .quiet-feature-art::before { content: ""; position: absolute; inset: 0; background: linear-gradient(145deg, transparent 0 28%, rgba(214,255,84,.7) 28% 29%, transparent 29% 52%, rgba(255,255,255,.16) 52% 53%, transparent 53%), radial-gradient(circle at 70% 30%, #61772f 0 3%, transparent 3.5%); }
+  .quiet-feature-art::after { content: "AI → DESIGN → CODE"; position: absolute; left: 24px; bottom: 21px; font: 600 11px/1.4 ui-monospace, monospace; letter-spacing: .12em; color: #dfe9bf; }
+  .quiet-feature-copy h2 { font-family: Georgia, serif; font-size: clamp(34px, 4vw, 54px); line-height: 1.06; letter-spacing: -.035em; font-weight: 500; margin: 15px 0; }
+  .quiet-summary { color: #b5b8b1; line-height: 1.7; font-size: 16px; max-width: 580px; }
+  .quiet-meta { color: #7f847d; font-size: 12px; display: flex; gap: 10px; margin-top: 22px; }
+  .quiet-meta span + span::before { content: "·"; margin-right: 10px; }
+  .quiet-archive { margin-top: 78px; display: grid; grid-template-columns: 160px 1fr; gap: 45px; }
+  .quiet-year { color: #777d75; font: 500 13px/1 ui-monospace, monospace; padding-top: 22px; }
+  .quiet-post-row { display: grid; grid-template-columns: 1fr auto; gap: 25px; padding: 21px 12px 21px 0; border-top: 1px solid #292c29; transition: .2s ease; }
+  .quiet-post-row:last-child { border-bottom: 1px solid #292c29; }
+  .quiet-post-row:hover { padding-left: 14px; padding-right: 14px; color: #111312; background: var(--quiet-accent); border-color: var(--quiet-accent); }
+  .quiet-post-title { font-family: Georgia, serif; font-size: 24px; }
+  .quiet-post-desc { color: #7f847d; margin-top: 8px; font-size: 13px; }
+  .quiet-post-row:hover .quiet-post-desc, .quiet-post-row:hover .quiet-row-date { color: #3d442a; }
+  .quiet-row-date { color: #777d75; font: 12px/1.4 ui-monospace, monospace; padding-top: 6px; white-space: nowrap; }
+
+  .quiet-article { display: none; }
+  .quiet-back { color: #a9ada6; background: transparent; border: 0; padding: 0; cursor: pointer; }
+  .quiet-back:hover { color: var(--quiet-accent); }
+  .quiet-article-head { width: min(850px, 100%); margin: 68px auto 46px; }
+  .quiet-article-head h1 { font-family: Georgia, serif; font-weight: 500; font-size: clamp(48px, 7vw, 78px); line-height: .98; letter-spacing: -.05em; margin: 18px 0 24px; }
+  .quiet-deck { color: #b5b9b1; font-family: Georgia, serif; font-size: 21px; line-height: 1.55; max-width: 720px; }
+  .quiet-hero { width: min(1060px, 100%); height: 430px; margin: 48px auto 66px; background: linear-gradient(135deg, #20251e, #394329); position: relative; overflow: hidden; }
+  .quiet-hero::before { content: "PROMPT"; position: absolute; left: 8%; top: 16%; color: #778963; font: 700 clamp(44px, 9vw, 110px)/1 ui-monospace, monospace; }
+  .quiet-hero::after { content: "IDEA  →  ITERATION  →  WEBSITE"; position: absolute; left: 8%; bottom: 16%; color: var(--quiet-accent); font: 600 clamp(12px, 2vw, 21px)/1 ui-monospace, monospace; letter-spacing: .12em; }
+  .quiet-prose { width: min(var(--quiet-content), 100%); margin: 0 auto; color: #d4d3cc; font-family: Georgia, serif; font-size: 19px; line-height: 1.82; }
+  .quiet-prose h2 { color: #f4f2ea; font-size: 34px; line-height: 1.2; margin: 60px 0 17px; letter-spacing: -.02em; }
+  .quiet-prose p { margin: 0 0 25px; }
+  .quiet-prose code { font-family: ui-monospace, monospace; color: var(--quiet-accent); font-size: .85em; }
+  .quiet-code { width: min(860px, 100%); margin: 40px auto; border: 1px solid #323631; background: #0b0d0c; padding: 25px 28px; color: #bcd26e; font: 13px/1.75 ui-monospace, monospace; overflow: auto; }
+  .quiet-note { border-left: 2px solid var(--quiet-accent); padding: 4px 0 4px 22px; color: #aaafa7; margin: 36px 0; }
+
+  .notebook-shell {
+    --note-accent: #7cb8ff;
+    background: #0b0d12;
+    color: #dfe4ee;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  .note-topbar { height: 58px; border-bottom: 1px solid #242937; display: flex; align-items: center; padding: 0 clamp(18px,4vw,55px); justify-content: space-between; }
+  .note-logo { color: #fff; font-weight: 700; }
+  .note-logo::before { content: "~/"; color: var(--note-accent); }
+  .note-tabs { display: flex; gap: 2px; }
+  .note-tabs button { border: 0; color: #8d96a8; background: transparent; padding: 18px 16px; cursor: pointer; border-bottom: 2px solid transparent; }
+  .note-tabs button[aria-pressed="true"] { color: #e7ecf5; border-color: var(--note-accent); }
+  .note-layout { display: grid; grid-template-columns: 230px minmax(0, 1fr); min-height: 862px; }
+  .note-sidebar { border-right: 1px solid #242937; padding: 34px 24px; }
+  .note-side-label { color: #5f687a; font-size: 11px; text-transform: uppercase; letter-spacing: .12em; margin-bottom: 14px; }
+  .note-side-item { display: block; padding: 9px 0; color: #8993a5; font-size: 12px; }
+  .note-side-item.active { color: var(--note-accent); }
+  .note-content { width: min(100%, 980px); padding: 64px clamp(28px, 7vw, 96px) 100px; }
+  .note-kicker { color: var(--note-accent); font-size: 12px; }
+  .note-content h1 { font-family: Inter, sans-serif; font-size: clamp(44px, 6vw, 76px); line-height: .96; letter-spacing: -.055em; margin: 18px 0 24px; max-width: 800px; }
+  .note-intro { color: #98a2b4; font-family: Inter, sans-serif; line-height: 1.7; max-width: 670px; }
+  .note-feature { margin-top: 55px; display: grid; grid-template-columns: 1fr 180px; gap: 35px; padding: 28px; border: 1px solid #2a3040; background: #11151d; box-shadow: 7px 7px 0 #171d29; }
+  .note-feature h2 { font-family: Inter, sans-serif; font-size: 31px; letter-spacing: -.03em; margin: 12px 0; }
+  .note-feature p { color: #939daf; font: 14px/1.65 Inter, sans-serif; }
+  .note-diagram { border: 1px solid #30394a; min-height: 155px; display: grid; place-items: center; color: #71809a; font-size: 11px; background: repeating-linear-gradient(0deg, transparent 0 20px, rgba(124,184,255,.05) 20px 21px); }
+  .note-archive { margin-top: 60px; }
+  .note-year { color: #5e687a; margin: 36px 0 10px; font-size: 12px; }
+  .note-row { display: grid; grid-template-columns: 95px 1fr auto; gap: 20px; padding: 16px 12px; margin: 0 -12px; border-top: 1px dashed #292f3d; align-items: baseline; }
+  .note-row:hover { background: #151b26; }
+  .note-row:hover .note-row-title { color: var(--note-accent); }
+  .note-date, .note-tag { color: #687286; font-size: 11px; }
+  .note-row-title { color: #d7dce6; font-size: 14px; }
+  .note-article { display: none; }
+  .note-breadcrumb { color: #6d7789; font-size: 12px; margin-bottom: 58px; }
+  .note-breadcrumb b { color: var(--note-accent); font-weight: 400; cursor: pointer; }
+  .note-article-head { border-bottom: 1px solid #282e3b; padding-bottom: 36px; margin-bottom: 45px; }
+  .note-article-head h1 { max-width: 840px; }
+  .note-article-meta { color: #6f798b; font-size: 11px; display: flex; flex-wrap: wrap; gap: 18px; }
+  .note-article-body { max-width: 720px; font-family: Inter, sans-serif; color: #c7ceda; font-size: 17px; line-height: 1.78; }
+  .note-article-body h2 { color: #f0f3f8; font-size: 29px; margin: 52px 0 15px; letter-spacing: -.025em; }
+  .note-article-body li { margin: 11px 0; }
+  .note-code { margin: 36px 0; padding: 22px; border: 1px solid #2c3443; background: #080a0e; color: #9fc7f7; font: 13px/1.7 ui-monospace, monospace; overflow: auto; }
+  .note-code .green { color: #9bd79d; }
+  .note-callout { margin: 36px 0; border: 1px solid #34415a; padding: 20px 22px; background: #111824; font-size: 14px; }
+  .note-callout strong { color: var(--note-accent); }
+
+  @media (max-width: 720px) {
+    .blog-viz-stage, .quiet-shell, .notebook-shell { min-height: 1120px; }
+    .quiet-links > span { display: none; }
+    .quiet-nav { padding: 0 18px; }
+    .quiet-main { width: min(100% - 34px, 1120px); padding-top: 48px; }
+    .quiet-index-head, .quiet-feature { grid-template-columns: 1fr; gap: 28px; }
+    .quiet-index-head { margin-bottom: 48px; }
+    .quiet-feature-art { order: 2; }
+    .quiet-archive { grid-template-columns: 1fr; gap: 0; margin-top: 55px; }
+    .quiet-year { padding: 0 0 16px; }
+    .quiet-post-row { grid-template-columns: 1fr; gap: 8px; }
+    .quiet-row-date { padding: 0; }
+    .quiet-hero { height: 280px; margin: 36px auto 48px; }
+    .note-layout { grid-template-columns: 1fr; }
+    .note-sidebar { display: none; }
+    .note-content { padding: 48px 22px 100px; }
+    .note-feature { grid-template-columns: 1fr; }
+    .note-diagram { min-height: 100px; }
+    .note-row { grid-template-columns: 72px 1fr; }
+    .note-tag { display: none; }
+  }
+</style>
+
+<div class="viz-carousel" aria-label="Blog design directions">
+  <section class="blog-viz-stage" data-variant="Quiet editorial" aria-label="Quiet editorial blog design" hidden>
+    <div class="quiet-shell" id="quiet-design" aria-label="Quiet editorial appearance">
+      <header class="quiet-nav">
+        <div class="quiet-brand">Raj Nair</div>
+        <div class="quiet-links">
+          <span>About</span><span>Projects</span><span>Blog</span>
+          <div class="quiet-view-toggle" aria-label="Preview page">
+            <button type="button" data-quiet-view="index" aria-pressed="true">Index</button>
+            <button type="button" data-quiet-view="article" aria-pressed="false">Article</button>
+          </div>
+        </div>
+      </header>
+      <main class="quiet-main">
+        <div class="quiet-index" data-quiet-panel="index">
+          <section class="quiet-index-head">
+            <div><div class="quiet-eyebrow">Notes, experiments & ideas</div><h1>Writing</h1></div>
+            <p>I write about building with AI, learning in public, and the small systems that help ideas become real.</p>
+          </section>
+          <article class="quiet-feature">
+            <div class="quiet-feature-art" aria-label="Abstract diagram showing a path from AI to design to code"></div>
+            <div class="quiet-feature-copy">
+              <div class="quiet-eyebrow">Featured · Building in public</div>
+              <h2>Building a Personal Website Using AI</h2>
+              <p class="quiet-summary">What happened when I treated AI as a collaborator—not a magic button—and rebuilt my corner of the internet one decision at a time.</p>
+              <div class="quiet-meta"><span>September 22, 2026</span><span>8 min read</span></div>
+            </div>
+          </article>
+          <section class="quiet-archive">
+            <div class="quiet-year">2026 / 04 posts</div>
+            <div>
+              <article class="quiet-post-row"><div><div class="quiet-post-title">Building a Personal Website Using AI</div><div class="quiet-post-desc">A practical account of prompts, choices, mistakes, and iteration.</div></div><div class="quiet-row-date">SEP 22 · 8 MIN</div></article>
+              <article class="quiet-post-row"><div><div class="quiet-post-title">The Case for Small Digital Gardens</div><div class="quiet-post-desc">Why unfinished notes can be more useful than polished posts.</div></div><div class="quiet-row-date">AUG 08 · 5 MIN</div></article>
+              <article class="quiet-post-row"><div><div class="quiet-post-title">What I Learned Shipping Before I Was Ready</div><div class="quiet-post-desc">Three lessons from turning a private prototype into a public thing.</div></div><div class="quiet-row-date">JUN 14 · 6 MIN</div></article>
+            </div>
+          </section>
+        </div>
+        <article class="quiet-article" data-quiet-panel="article">
+          <button type="button" class="quiet-back" data-quiet-back>← Back to all writing</button>
+          <header class="quiet-article-head">
+            <div class="quiet-eyebrow">Building in public</div>
+            <h1>Building a Personal Website Using AI</h1>
+            <p class="quiet-deck">What happened when I treated AI as a collaborator—not a magic button—and rebuilt my corner of the internet one decision at a time.</p>
+            <div class="quiet-meta"><span>September 22, 2026</span><span>8 min read</span></div>
+          </header>
+          <div class="quiet-hero" aria-label="Editorial hero image showing the progression from idea to website"></div>
+          <div class="quiet-prose">
+            <p>I had wanted a personal website for years. Not a portfolio assembled from a template, but a place that felt like mine: a record of projects, questions, and things I was still figuring out.</p>
+            <p>The obstacle was never the idea. It was translating that idea into a system I could actually maintain.</p>
+            <h2>AI changed the starting point</h2>
+            <p>Instead of beginning with a blank editor, I began with a conversation. I described the experience I wanted, inspected the result, and made one decision at a time.</p>
+            <div class="quiet-note">The useful shift was not “AI can build my website.” It was “AI can help me reason through each layer of the website.”</div>
+          </div>
+          <pre class="quiet-code"><code>const post = {
+  title: "Building a Personal Website Using AI",
+  published: "2026-09-22",
+  readingTime: "8 min",
+  blocks: ["text", "image", "code", "embed"]
+};</code></pre>
+          <div class="quiet-prose"><h2>A structure that can grow</h2><p>The final test is simple: can the next post contain a photograph, a small code sample, or an embedded conversation without redesigning the whole site? The article system should make those choices ordinary.</p></div>
+        </article>
+      </main>
+    </div>
+  </section>
+
+  <section class="blog-viz-stage" data-variant="Technical notebook" aria-label="Technical notebook blog design">
+    <div class="notebook-shell" id="notebook-design" aria-label="Technical notebook appearance">
+      <header class="note-topbar">
+        <div class="note-logo">rajnair.dev</div>
+        <nav class="note-tabs" aria-label="Preview page">
+          <button type="button" data-note-view="index" aria-pressed="true">index.md</button>
+          <button type="button" data-note-view="article" aria-pressed="false">article.md</button>
+        </nav>
+      </header>
+      <div class="note-layout">
+        <aside class="note-sidebar">
+          <div class="note-side-label">Explorer</div>
+          <span class="note-side-item active">writing/</span>
+          <span class="note-side-item">projects/</span>
+          <span class="note-side-item">about.md</span>
+          <div class="note-side-label" style="margin-top:42px">Topics</div>
+          <span class="note-side-item"># artificial-intelligence</span>
+          <span class="note-side-item"># building-in-public</span>
+          <span class="note-side-item"># product-thinking</span>
+        </aside>
+        <main class="note-content">
+          <div class="note-index" data-note-panel="index">
+            <div class="note-kicker">// NOTES, EXPERIMENTS & IDEAS</div>
+            <h1>Writing from the workbench.</h1>
+            <p class="note-intro">Field notes on building with AI, learning in public, and making digital products that remain understandable.</p>
+            <article class="note-feature">
+              <div><div class="note-kicker">FEATURED / 2026-09-22</div><h2>Building a Personal Website Using AI</h2><p>A practical account of the prompts, choices, mistakes, and iterations behind this website.</p></div>
+              <div class="note-diagram">[ idea ] → [ ship ]</div>
+            </article>
+            <section class="note-archive">
+              <div class="note-year">2026 /</div>
+              <article class="note-row"><span class="note-date">09.22</span><span class="note-row-title">Building a Personal Website Using AI</span><span class="note-tag">8 min · AI</span></article>
+              <article class="note-row"><span class="note-date">08.08</span><span class="note-row-title">The Case for Small Digital Gardens</span><span class="note-tag">5 min · Notes</span></article>
+              <article class="note-row"><span class="note-date">06.14</span><span class="note-row-title">What I Learned Shipping Before I Was Ready</span><span class="note-tag">6 min · Process</span></article>
+              <div class="note-year">2025 /</div>
+              <article class="note-row"><span class="note-date">11.03</span><span class="note-row-title">A Better Way to Keep Project Notes</span><span class="note-tag">4 min · Systems</span></article>
+            </section>
+          </div>
+          <article class="note-article" data-note-panel="article">
+            <div class="note-breadcrumb"><b data-note-back>writing</b> / building-a-personal-website-using-ai.md</div>
+            <header class="note-article-head">
+              <div class="note-kicker"># BUILDING IN PUBLIC</div>
+              <h1>Building a Personal Website Using AI</h1>
+              <div class="note-article-meta"><span>published: 2026-09-22</span><span>reading_time: 8 min</span><span>status: shipped</span></div>
+            </header>
+            <div class="note-article-body">
+              <p>I had wanted a personal website for years. The hard part was not writing code—it was deciding what the site should say, how it should feel, and what I could realistically maintain.</p>
+              <h2>01. Start with decisions, not components</h2>
+              <p>I used AI as a thinking partner. Each iteration answered one concrete question:</p>
+              <ul><li>What must a visitor understand in the first ten seconds?</li><li>Which content deserves its own route?</li><li>What should remain deliberately simple?</li></ul>
+              <pre class="note-code"><code><span class="green">const</span> workflow = [
+  "describe the intent",
+  "inspect the output",
+  "make one decision",
+  "repeat"
+];</code></pre>
+              <div class="note-callout"><strong>Observation:</strong> AI made iteration cheaper. It did not make product judgment optional.</div>
+              <h2>02. Make rich content ordinary</h2>
+              <p>A useful writing system should support prose, images, code, tables, lists, and embeds without making every article look like a collection of unrelated cards.</p>
+            </div>
+          </article>
+        </main>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+  function setPanel(prefix, view) {
+    document.querySelectorAll(`[data-${prefix}-panel]`).forEach((panel) => {
+      panel.style.display = panel.dataset[`${prefix}Panel`] === view ? "block" : "none";
+    });
+    document.querySelectorAll(`[data-${prefix}-view]`).forEach((button) => {
+      button.setAttribute("aria-pressed", String(button.dataset[`${prefix}View`] === view));
+    });
+  }
+
+  document.querySelectorAll("[data-quiet-view]").forEach((button) => button.addEventListener("click", () => setPanel("quiet", button.dataset.quietView)));
+  document.querySelectorAll("[data-note-view]").forEach((button) => button.addEventListener("click", () => setPanel("note", button.dataset.noteView)));
+  document.querySelector("[data-quiet-back]").addEventListener("click", () => setPanel("quiet", "index"));
+  document.querySelector("[data-note-back]").addEventListener("click", () => setPanel("note", "index"));
+
+  setPanel("quiet", "index");
+  setPanel("note", "index");
+
+  if (globalThis.Tweak) {
+    const quietState = { accent: "#d6ff54", readingWidth: 680 };
+    const quiet = document.getElementById("quiet-design");
+    const renderQuiet = () => {
+      quiet.style.setProperty("--quiet-accent", quietState.accent);
+      quiet.style.setProperty("--quiet-content", `${quietState.readingWidth}px`);
+    };
+    renderQuiet();
+    const quietTweak = new Tweak({ container: quiet, onChange: renderQuiet });
+    quietTweak.addColorPicker(quietState, "accent", { label: "Accent", reference: "--quiet-accent" });
+    quietTweak.addSlider(quietState, "readingWidth", { label: "Reading width", min: 580, max: 760, step: 10, unit: "px", reference: "--quiet-content" });
+
+    const noteState = { accent: "#7cb8ff" };
+    const note = document.getElementById("notebook-design");
+    const renderNote = () => note.style.setProperty("--note-accent", noteState.accent);
+    renderNote();
+    const noteTweak = new Tweak({ container: note, onChange: renderNote });
+    noteTweak.addColorPicker(noteState, "accent", { label: "Accent", reference: "--note-accent" });
+  }
+</script>

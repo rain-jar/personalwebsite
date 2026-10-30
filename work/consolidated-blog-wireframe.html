@@ -1,0 +1,267 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Source+Sans+3:wght@400;500&display=swap');
+
+  #raj-blog-concept {
+    --site-bg: #1e0e0b;
+    --site-text: #d9ccad;
+    --site-link: #9ba4d4;
+    --site-panel: #2a1712;
+    --site-panel-hover: #342019;
+    --site-line: rgba(217, 204, 173, .22);
+    --site-muted: rgba(217, 204, 173, .62);
+    min-height: 1050px;
+    background: var(--site-bg);
+    color: var(--site-text);
+    font-family: "Source Sans 3", sans-serif;
+  }
+  #raj-blog-concept * { box-sizing: border-box; }
+  #raj-blog-concept button { font: inherit; }
+  .raj-blog-frame { width: min(900px, calc(100% - 40px)); margin: 0 auto; }
+  .raj-blog-header {
+    min-height: 72px;
+    border-bottom: 1px solid var(--site-line);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .raj-blog-home { color: var(--site-text); font-family: "EB Garamond", serif; font-size: 22px; font-weight: 500; }
+  .raj-blog-header-right { display: flex; align-items: center; gap: 24px; }
+  .raj-blog-nav { display: flex; gap: 22px; color: var(--site-muted); font-size: 15px; }
+  .raj-blog-nav span:first-child { color: var(--site-text); }
+  .raj-blog-switcher { display: flex; border: 1px solid var(--site-line); padding: 3px; border-radius: 4px; }
+  .raj-blog-switcher button {
+    border: 0;
+    color: var(--site-muted);
+    background: transparent;
+    padding: 7px 11px;
+    border-radius: 2px;
+  }
+  .raj-blog-switcher button[aria-pressed="true"] { color: var(--site-bg); background: var(--site-text); }
+  .raj-blog-main { padding: 76px 0 110px; }
+  .raj-blog-kicker { color: var(--site-link); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; font-weight: 500; }
+
+  .raj-blog-index-header { display: grid; grid-template-columns: 1fr 360px; gap: 70px; align-items: end; margin-bottom: 60px; }
+  .raj-blog-index-header h1 {
+    font-family: "EB Garamond", serif;
+    font-size: clamp(62px, 9vw, 94px);
+    line-height: .88;
+    letter-spacing: -.045em;
+    font-weight: 500;
+    margin: 14px 0 0;
+  }
+  .raj-blog-index-header p { color: var(--site-muted); font-size: 17px; line-height: 1.65; margin: 0; }
+  .raj-featured {
+    background: var(--site-panel);
+    border: 1px solid var(--site-line);
+    padding: 30px;
+    display: grid;
+    grid-template-columns: 1fr 245px;
+    gap: 44px;
+    align-items: center;
+  }
+  .raj-featured h2 { font-family: "EB Garamond", serif; font-size: 37px; line-height: 1.05; letter-spacing: -.025em; font-weight: 500; margin: 13px 0; }
+  .raj-featured p { color: var(--site-muted); font-size: 15px; line-height: 1.65; margin: 0; max-width: 510px; }
+  .raj-meta { color: var(--site-muted); display: flex; flex-wrap: wrap; gap: 9px; margin-top: 20px; font-size: 12px; letter-spacing: .02em; }
+  .raj-meta span + span::before { content: "·"; padding-right: 9px; }
+  .raj-featured-media { min-height: 170px; position: relative; overflow: hidden; background: #170b09; border: 1px solid var(--site-line); }
+  .raj-featured-media::before { content: ""; position: absolute; inset: 18px; background: repeating-linear-gradient(0deg, transparent 0 23px, rgba(217,204,173,.08) 23px 24px), repeating-linear-gradient(90deg, transparent 0 23px, rgba(217,204,173,.06) 23px 24px); }
+  .raj-featured-media::after { content: "idea  →  prompt  →  website"; position: absolute; left: 18px; right: 18px; top: 50%; color: var(--site-link); text-align: center; font-size: 11px; letter-spacing: .08em; transform: translateY(-50%); }
+  .raj-contents { margin-top: 70px; }
+  .raj-contents-heading { display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 13px; border-bottom: 1px solid var(--site-line); }
+  .raj-contents-heading h2 { font-family: "EB Garamond", serif; font-size: 30px; font-weight: 500; margin: 0; }
+  .raj-contents-heading span { color: var(--site-muted); font-size: 12px; }
+  .raj-year-group { display: grid; grid-template-columns: 100px 1fr; gap: 28px; margin-top: 38px; }
+  .raj-year { color: var(--site-muted); font-size: 12px; letter-spacing: .08em; padding-top: 18px; }
+  .raj-post-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 25px; padding: 17px 14px; margin: 0 -14px; border-top: 1px solid rgba(217,204,173,.13); transition: background .15s ease; }
+  .raj-post-row:last-child { border-bottom: 1px solid rgba(217,204,173,.13); }
+  .raj-post-row:hover { background: var(--site-panel-hover); }
+  .raj-post-title { font-family: "EB Garamond", serif; font-size: 22px; line-height: 1.15; }
+  .raj-post-summary { color: var(--site-muted); font-size: 13px; margin-top: 6px; }
+  .raj-post-data { color: var(--site-muted); font-size: 12px; padding-top: 4px; white-space: nowrap; }
+
+  .raj-article { display: none; }
+  .raj-back { color: var(--site-link); background: none; border: 0; padding: 7px 0; margin-bottom: 54px; }
+  .raj-article-header { border-bottom: 1px solid var(--site-line); padding-bottom: 38px; }
+  .raj-article-header h1 { font-family: "EB Garamond", serif; font-size: clamp(52px, 8vw, 78px); font-weight: 500; letter-spacing: -.04em; line-height: .95; max-width: 790px; margin: 17px 0 24px; }
+  .raj-deck { font-family: "EB Garamond", serif; font-size: 22px; line-height: 1.48; color: rgba(217,204,173,.78); max-width: 720px; margin: 0; }
+  .raj-reading-column { width: min(680px, 100%); margin: 54px auto 0; font-family: "EB Garamond", serif; font-size: 19px; line-height: 1.78; }
+  .raj-reading-column p { margin: 0 0 25px; }
+  .raj-reading-column h2 { font-size: 34px; line-height: 1.18; font-weight: 500; margin: 58px 0 18px; letter-spacing: -.02em; }
+  .raj-reading-column h3 { font-size: 24px; font-weight: 500; margin: 42px 0 14px; }
+  .raj-reading-column ul { padding-left: 23px; margin: 10px 0 30px; }
+  .raj-reading-column li { margin: 10px 0; padding-left: 6px; }
+  .raj-media-block { width: 100%; aspect-ratio: 16/9; margin: 40px 0 14px; position: relative; overflow: hidden; background: linear-gradient(145deg, #150a08, #38211a); border: 1px solid var(--site-line); }
+  .raj-media-grid { position: absolute; inset: 0; background: repeating-linear-gradient(0deg, transparent 0 36px, rgba(217,204,173,.08) 36px 37px), repeating-linear-gradient(90deg, transparent 0 48px, rgba(217,204,173,.07) 48px 49px); }
+  .raj-media-step { position: absolute; border: 1px solid rgba(217,204,173,.34); padding: 10px 14px; color: var(--site-text); font-family: "Source Sans 3", sans-serif; font-size: 12px; background: #1e0e0b; }
+  .raj-media-step.one { left: 8%; top: 39%; }
+  .raj-media-step.two { left: 39%; top: 39%; }
+  .raj-media-step.three { right: 8%; top: 39%; }
+  .raj-media-arrow { position: absolute; top: 44%; color: var(--site-link); }
+  .raj-media-arrow.a { left: 31%; }
+  .raj-media-arrow.b { right: 31%; }
+  .raj-caption { color: var(--site-muted); font-family: "Source Sans 3", sans-serif; font-size: 12px; margin-bottom: 36px; }
+  .raj-code { margin: 36px 0; padding: 22px 24px; background: #150a08; border: 1px solid var(--site-line); color: #c6cba8; font: 13px/1.7 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; overflow-x: auto; }
+  .raj-code .code-key { color: var(--site-link); }
+  .raj-quote { margin: 38px 0; padding: 4px 0 4px 22px; border-left: 2px solid var(--site-link); color: rgba(217,204,173,.75); font-size: 21px; line-height: 1.6; }
+  .raj-table-wrap { overflow-x: auto; margin: 36px 0; }
+  .raj-table { width: 100%; border-collapse: collapse; font-family: "Source Sans 3", sans-serif; font-size: 14px; }
+  .raj-table th { color: var(--site-muted); font-weight: 500; text-align: left; border-bottom: 1px solid rgba(217,204,173,.34); padding: 12px 10px; }
+  .raj-table td { border-bottom: 1px solid rgba(217,204,173,.14); padding: 13px 10px; vertical-align: top; }
+  .raj-embed { margin: 38px 0; min-height: 145px; border: 1px solid var(--site-line); background: var(--site-panel); padding: 23px; display: grid; grid-template-columns: 70px 1fr; gap: 20px; align-items: center; font-family: "Source Sans 3", sans-serif; }
+  .raj-embed-mark { width: 60px; height: 60px; border-radius: 14px; border: 1px solid rgba(217,204,173,.3); display: grid; place-items: center; color: var(--site-link); font-weight: 500; }
+  .raj-embed strong { display: block; color: var(--site-text); font-size: 15px; font-weight: 500; margin-bottom: 6px; }
+  .raj-embed p { color: var(--site-muted); font-size: 13px; line-height: 1.5; margin: 0; }
+  .raj-article-footer { width: min(680px, 100%); margin: 70px auto 0; padding-top: 25px; border-top: 1px solid var(--site-line); display: flex; justify-content: space-between; gap: 24px; color: var(--site-link); font-size: 14px; }
+
+  @media (max-width: 720px) {
+    #raj-blog-concept { min-height: 1200px; }
+    .raj-blog-frame { width: min(100% - 32px, 900px); }
+    .raj-blog-header { align-items: flex-start; padding: 18px 0; }
+    .raj-blog-header-right { gap: 12px; flex-direction: column; align-items: flex-end; }
+    .raj-blog-nav { gap: 14px; }
+    .raj-blog-main { padding-top: 52px; }
+    .raj-blog-index-header { grid-template-columns: 1fr; gap: 28px; margin-bottom: 44px; }
+    .raj-featured { grid-template-columns: 1fr; gap: 28px; padding: 23px; }
+    .raj-featured-media { min-height: 140px; }
+    .raj-year-group { grid-template-columns: 1fr; gap: 8px; }
+    .raj-year { padding-top: 0; }
+    .raj-post-row { grid-template-columns: 1fr; gap: 8px; }
+    .raj-post-data { padding: 0; }
+    .raj-back { margin-bottom: 38px; }
+    .raj-media-step { padding: 8px; font-size: 11px; }
+    .raj-media-step.one { left: 4%; }
+    .raj-media-step.two { left: 37%; }
+    .raj-media-step.three { right: 4%; }
+    .raj-embed { grid-template-columns: 1fr; }
+  }
+</style>
+
+<div id="raj-blog-concept">
+  <div class="raj-blog-frame">
+    <header class="raj-blog-header">
+      <div class="raj-blog-home">🇷 Home</div>
+      <div class="raj-blog-header-right">
+        <nav class="raj-blog-nav" aria-label="Primary navigation"><span>Blogs</span><span>Projects</span></nav>
+        <div class="raj-blog-switcher" aria-label="Preview page">
+          <button type="button" data-raj-view="index" aria-pressed="true">Index</button>
+          <button type="button" data-raj-view="article" aria-pressed="false">Article</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="raj-blog-main">
+      <section data-raj-panel="index">
+        <header class="raj-blog-index-header">
+          <div><div class="raj-blog-kicker">Notes, experiments & ideas</div><h1>Writing</h1></div>
+          <p>I write about building with AI, learning in public, and the small systems that help ideas become real.</p>
+        </header>
+
+        <article class="raj-featured">
+          <div>
+            <div class="raj-blog-kicker">Featured · Building in public</div>
+            <h2>Building a Personal Website Using AI</h2>
+            <p>What happened when I treated AI as a collaborator—not a magic button—and rebuilt my corner of the internet one decision at a time.</p>
+            <div class="raj-meta"><span>September 22, 2026</span><span>8 min read</span></div>
+          </div>
+          <div class="raj-featured-media" role="img" aria-label="Diagram showing a progression from idea to prompt to website"></div>
+        </article>
+
+        <section class="raj-contents">
+          <div class="raj-contents-heading"><h2>Contents</h2><span>7 posts</span></div>
+          <div class="raj-year-group">
+            <div class="raj-year">2026 / 04</div>
+            <div>
+              <article class="raj-post-row"><div><div class="raj-post-title">Building a Personal Website Using AI</div><div class="raj-post-summary">A practical account of prompts, choices, mistakes, and iteration.</div></div><div class="raj-post-data">SEP 22 · 8 MIN</div></article>
+              <article class="raj-post-row"><div><div class="raj-post-title">The Case for Small Digital Gardens</div><div class="raj-post-summary">Why unfinished notes can be more useful than polished posts.</div></div><div class="raj-post-data">AUG 08 · 5 MIN</div></article>
+              <article class="raj-post-row"><div><div class="raj-post-title">What I Learned Shipping Before I Was Ready</div><div class="raj-post-summary">Three lessons from turning a private prototype into a public thing.</div></div><div class="raj-post-data">JUN 14 · 6 MIN</div></article>
+              <article class="raj-post-row"><div><div class="raj-post-title">Designing a System I Can Maintain</div><div class="raj-post-summary">Choosing boring tools and clearer boundaries.</div></div><div class="raj-post-data">MAR 02 · 4 MIN</div></article>
+            </div>
+          </div>
+          <div class="raj-year-group">
+            <div class="raj-year">2025 / 03</div>
+            <div>
+              <article class="raj-post-row"><div><div class="raj-post-title">A Better Way to Keep Project Notes</div><div class="raj-post-summary">A lightweight practice for remembering why decisions were made.</div></div><div class="raj-post-data">NOV 03 · 4 MIN</div></article>
+              <article class="raj-post-row"><div><div class="raj-post-title">Learning in Public, Quietly</div><div class="raj-post-summary">Sharing unfinished work without turning it into performance.</div></div><div class="raj-post-data">JUL 19 · 7 MIN</div></article>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <article class="raj-article" data-raj-panel="article">
+        <button type="button" class="raj-back" data-raj-back>← Back to all writing</button>
+        <header class="raj-article-header">
+          <div class="raj-blog-kicker">Building in public</div>
+          <h1>Building a Personal Website Using AI</h1>
+          <p class="raj-deck">What happened when I treated AI as a collaborator—not a magic button—and rebuilt my corner of the internet one decision at a time.</p>
+          <div class="raj-meta"><span>September 22, 2026</span><span>8 min read</span></div>
+        </header>
+
+        <div class="raj-reading-column">
+          <p>I had wanted a personal website for years. Not a portfolio assembled from a template, but a place that felt like mine: a record of projects, questions, and things I was still figuring out.</p>
+          <p>The obstacle was never the idea. It was translating that idea into a system I could actually maintain.</p>
+
+          <div class="raj-media-block" role="img" aria-label="Three-step diagram: idea, conversation, working website">
+            <div class="raj-media-grid"></div><span class="raj-media-step one">01 · idea</span><span class="raj-media-arrow a">→</span><span class="raj-media-step two">02 · conversation</span><span class="raj-media-arrow b">→</span><span class="raj-media-step three">03 · website</span>
+          </div>
+          <div class="raj-caption">The process was less “generate a website” and more a sequence of small, inspectable decisions.</div>
+
+          <h2>AI changed the starting point</h2>
+          <p>Instead of beginning with a blank editor, I began with a conversation. I described the experience I wanted, inspected the result, and made one decision at a time.</p>
+          <p class="raj-quote">The useful shift was not “AI can build my website.” It was “AI can help me reason through each layer of the website.”</p>
+
+          <h3>The working loop</h3>
+          <ul><li>Describe the outcome in plain language.</li><li>Inspect what the code actually does.</li><li>Change one decision at a time.</li><li>Test locally before publishing.</li></ul>
+
+          <pre class="raj-code"><code><span class="code-key">const</span> workflow = [
+  "describe the intent",
+  "inspect the output",
+  "make one decision",
+  "repeat"
+];</code></pre>
+
+          <h2>What each tool was good at</h2>
+          <div class="raj-table-wrap">
+            <table class="raj-table">
+              <thead><tr><th>Stage</th><th>AI helped with</th><th>I remained responsible for</th></tr></thead>
+              <tbody><tr><td>Direction</td><td>Generating options</td><td>Choosing the experience</td></tr><tr><td>Implementation</td><td>Writing and explaining code</td><td>Reviewing behavior</td></tr><tr><td>Publishing</td><td>Diagnosing build errors</td><td>Approving each release</td></tr></tbody>
+            </table>
+          </div>
+
+          <div class="raj-embed" aria-label="Example embedded Instagram post">
+            <div class="raj-embed-mark">IG</div><div><strong>Example embedded post or Reel</strong><p>External media can sit inside the same reading column, with enough context for readers who cannot load or interact with the embed.</p></div>
+          </div>
+
+          <h2>A structure that can grow</h2>
+          <p>The final test is simple: can the next post contain a photograph, a small code sample, a table, or an embedded conversation without redesigning the whole site? The article system should make those choices ordinary.</p>
+        </div>
+        <footer class="raj-article-footer"><button type="button" class="raj-back" data-raj-back>← All writing</button><span>Next: Small Digital Gardens →</span></footer>
+      </article>
+    </main>
+  </div>
+</div>
+
+<script>
+  (() => {
+    const root = document.getElementById("raj-blog-concept");
+    function show(view) {
+      root.querySelectorAll("[data-raj-panel]").forEach((panel) => {
+        panel.style.display = panel.dataset.rajPanel === view ? "block" : "none";
+      });
+      root.querySelectorAll("[data-raj-view]").forEach((button) => {
+        button.setAttribute("aria-pressed", String(button.dataset.rajView === view));
+      });
+    }
+    root.querySelectorAll("[data-raj-view]").forEach((button) => button.addEventListener("click", () => show(button.dataset.rajView)));
+    root.querySelectorAll("[data-raj-back]").forEach((button) => button.addEventListener("click", () => show("index")));
+    show("index");
+
+    if (globalThis.Tweak) {
+      const state = { readingWidth: 680 };
+      const render = () => root.querySelectorAll(".raj-reading-column, .raj-article-footer").forEach((element) => element.style.width = `min(${state.readingWidth}px, 100%)`);
+      render();
+      const tweak = new Tweak({ container: root, onChange: render });
+      tweak.addSlider(state, "readingWidth", { label: "Reading width", min: 600, max: 740, step: 10, unit: "px", reference: "article.reading-width" });
+    }
+  })();
+</script>

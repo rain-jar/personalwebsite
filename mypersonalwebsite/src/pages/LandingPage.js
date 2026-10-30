@@ -10,13 +10,12 @@ const LandingPage = () => {
         <small className="pronunciation">Son • Engineer • Curious </small>
       </h1>
       <p className="bio">
-        I'm an AI Enthusiast and Developer based in Canada. This space is used
-        to document my personal projects and endeavors. My most recent project
+        SaaS Solutions Consultant turned Applied-AI Builder. Building, breaking, debugging Agentic LLM systems. My most recent project
         is NWSL Fantasy.
       </p>
       <p className="contact">
         My email is{" "}
-        <a href="mailto:rajrnair90@gmail.com">itscuriousjar@gmail.com</a>.
+        <a href="mailto:medianjar@gmail.com">mediajar@gmail.com</a>.
       </p>
     </div>
   );
