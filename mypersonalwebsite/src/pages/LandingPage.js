@@ -10,12 +10,12 @@ const LandingPage = () => {
         <small className="pronunciation">Son • Engineer • Curious </small>
       </h1>
       <p className="bio">
-        SaaS Solutions Consultant turned Applied-AI Builder. Building, breaking, debugging Agentic LLM systems. My most recent project
+        SaaS Solutions Engineer turned Applied-AI Builder. Building, breaking, debugging Agentic LLM systems. My most recent project
         is NWSL Fantasy.
       </p>
       <p className="contact">
-        My email is{" "}
-        <a href="mailto:medianjar@gmail.com">mediajar@gmail.com</a>.
+        Reach me at {" "}
+        <a href="mailto:medianjar@gmail.com">medianjar@gmail.com</a>.
       </p>
     </div>
   );
